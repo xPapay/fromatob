@@ -1,5 +1,5 @@
 <template>
-  <div ref="container">
+  <div class="content" ref="container">
     <the-navigation />
     <router-view />
     <div class="placeholder" style="height: 2000px;"></div>
@@ -39,6 +39,8 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="sass">
+.content
+  max-width: 1170px
+  margin: 0 auto
 </style>
