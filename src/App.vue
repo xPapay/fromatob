@@ -3,39 +3,38 @@
     <the-navigation />
     <router-view />
     <div class="placeholder" style="height: 2000px;"></div>
+    <the-footer v-if="loadFooter" />
   </div>
 </template>
 
 <script>
   import { throttle } from 'lodash'
-  import Vue from 'vue'
   import TheNavigation from '@/components/TheNavigation'
     export default {
         name: 'app',
         components: {
           TheNavigation,
+          TheFooter: () => import(/* webpackChunkName: "footer" */ '@/components/TheFooter')
+        },
+        data() {
+          return {
+            loadFooter: false
+          }
         },
         mounted() {
           const treshold = document.body.scrollHeight / 2
           const viewportHeight = window.innerHeight
           const throttled = throttle(() => {
             const scrollTop = document.documentElement.scrollTop
-            const shouldLoad = scrollTop + viewportHeight >= treshold
-            if (shouldLoad) {
+            this.loadFooter = scrollTop + viewportHeight >= treshold
+            if (this.loadFooter) {
               document.removeEventListener('scroll', throttled)
-              console.log('loading...')
-              import(/* webpackChunkName: "footer" */ '@/components/TheFooter')
-              .then(({ default: footer }) => {
-                const FooterClass = Vue.extend(footer)
-                const FooterComponent = new FooterClass()
-                FooterComponent.$mount()
-                this.$refs.container.appendChild(FooterComponent.$el)
-              })
             }
           }, 800)
 
           document.addEventListener('scroll', throttled)
-        }
+        },
+        
     }
 </script>
 
