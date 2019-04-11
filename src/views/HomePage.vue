@@ -35,7 +35,7 @@
         />
       </div>
 
-      <tabs :tabs="['Passenger', 'Vehicle']" />
+      <tabs/>
     </header>
     <section class="section">
       <div class="content">

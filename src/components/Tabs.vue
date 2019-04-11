@@ -1,32 +1,32 @@
 <template>
     <div>
-        <button v-for="tab in tabs" @click="currentTab = tab">{{ tab }}</button>
+        <button v-for="tab in tabs" @click="currentTabComponent = tab">{{ getLabel(tab) }}</button>
         <component :is="currentTabComponent"></component>
     </div>
 </template>
 
 <script>
-    import TabPassenger from '@/components/TabPassenger'
-    import TabVehicle from '@/components/TabVehicle'
     export default {
         components: {
-            TabPassenger,
-            TabVehicle
+            TabPassenger: () => import(/* webpackChunkName: "passengerTab", webpackPrefetch: true */ '@/components/TabPassenger'),
+            TabVehicle: () => import(/* webpackChunkName: "vehicleTab", webpackPrefetch: true */ '@/components/TabVehicle')
         },
-        props: {
-            tabs: {
-                type: Array,
-                required: true
-            }
-        },
+
         data() {
             return {
-                currentTab: 'Passenger'
+                currentTabComponent: 'TabPassenger'
             }
         },
+
+        methods: {
+            getLabel(component) {
+                return component.substring(3)
+            }
+        },
+
         computed: {
-            currentTabComponent() {
-                return 'Tab' + this.currentTab
+            tabs() {
+                return Object.keys(this.$options.components)
             }
         }
     }
