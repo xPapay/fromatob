@@ -4,22 +4,35 @@
       <div class="content">
         <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
         <h3>All the best deals and direct booking in one search engine</h3>
-        <base-input
+        
+        <text-input
           key="start-location" 
+          v-model="start" 
+          placeholder="City, Station or Airport" 
           label="Start" 
-          placeholder="City, Station or Airport" 
-          icon="location"
-          v-model="start"
+          icon="icon-location"
         />
-        <base-input
+        <text-input
           key="destination-location" 
-          label="Arrival" 
+          v-model="destination" 
           placeholder="City, Station or Airport" 
-          icon="location"
-          v-model="destination"
+          label="Arrival" 
+          icon="icon-location"
         />
-        <datepicker key="departure-date" placeholder="Depart"/>
-        <datepicker key="return-date" placeholder="Return"/>
+        
+        <date-input
+          key="departure-date" 
+          placeholder="Depart" 
+          label="Depart"
+          v-model="departureDate"
+        />
+
+        <date-input
+          key="return-date" 
+          placeholder="Return" 
+          label="Return (optional)"
+          v-model="departureDate"
+        />
       </div>
     </header>
     <section class="section">
@@ -32,18 +45,20 @@
 
 <script>
     import hero from 'assets/images/hero.jpg'
-    import BaseInput from '@/components/BaseInput'
-    import Datepicker from 'vuejs-datepicker'
+    import TextInput from '@/components/TextInput'
+    import DateInput from '@/components/DateInput'
+    
     export default {
       name: 'HomePage',
       components: {
-        BaseInput,
-        Datepicker
+        TextInput,
+        DateInput
       },
       data() {
         return {
           start: '',
-          destination: ''
+          destination: '',
+          departureDate: ''
         }
       },
       computed: {

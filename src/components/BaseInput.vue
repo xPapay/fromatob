@@ -2,15 +2,8 @@
     <div class="input-box-wrapper">
         <label class="label" for="input">{{ label }}</label>
         <div class="input-box">
-            <base-icon class="input-box__icon" name="icon-location" height="2rem" width="2rem"/>
-            <input
-                class="input-box__input" 
-                type="text" 
-                id="input" 
-                v-bind="$attrs" 
-                @input="$emit('input', $event.target.value)"
-                :value="value"
-            >
+            <base-icon class="input-box__icon" :name="icon" height="2rem" width="2rem"/>
+            <slot/>
         </div>
     </div>
 </template>
@@ -18,15 +11,10 @@
 <script>
     import BaseIcon from '@/components/BaseIcon'
     export default {
-        inheritAttrs: false,
         components: {
             BaseIcon
         },
         props: {
-            value: {
-                type: String,
-                required: false
-            },
             label: {
                 type: String,
                 required: false
@@ -60,6 +48,7 @@
     left: 5px
     width: 2rem
     height: 100%
+    z-index: 999
 
 .input-box__input
     padding-left: 2.25rem
