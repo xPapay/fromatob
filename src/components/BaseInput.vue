@@ -50,7 +50,7 @@
     height: 100%
     z-index: 999
 
-.input-box__input
+::v-deep .input-box__input
     padding-left: 2.25rem
     height: 100%
     width: 100%

@@ -45,10 +45,4 @@
     width: 100%
     height: 100%
 
-.input-box__input
-    padding-left: 2.25rem
-    height: 100%
-    width: 100%
-
-
 </style>
