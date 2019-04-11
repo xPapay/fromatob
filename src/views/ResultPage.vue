@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1>Result Page</h1>
+      <header class="header" :style="{ backgroundImage: `url(${require('assets/images/hero.jpg')})` }">
+        <h2>Result's page header</h2>
+      </header>
     </div>
 </template>
 

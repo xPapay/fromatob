@@ -7,7 +7,7 @@ export const routes = [
     { 
         path: '/', 
         name: 'home', 
-        component: () => import(/* webpackChunkName: "homepage" */ '@/views/HomePage') 
+        component: () => import(/*  webpackChunkName: "homepage" */ '@/views/HomePage') 
     },
     { 
         path: '/results', 

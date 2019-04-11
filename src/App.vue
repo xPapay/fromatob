@@ -1,5 +1,5 @@
 <template>
-  <div class="content" ref="container">
+  <div>
     <the-navigation />
     <router-view />
     <div class="placeholder" style="height: 2000px;"></div>
@@ -8,12 +8,13 @@
 </template>
 
 <script>
+  import 'normalize.css'
   import { throttle } from 'lodash'
-  import TheNavigation from '@/components/TheNavigation'
+  // import TheNavigation from '@/components/TheNavigation'
     export default {
         name: 'app',
         components: {
-          TheNavigation,
+          TheNavigation: () => import(/* webpackChunkName: "navigation" */ '@/components/TheNavigation'),
           TheFooter: () => import(/* webpackChunkName: "footer" */ '@/components/TheFooter')
         },
         data() {
@@ -34,11 +35,19 @@
 
           document.addEventListener('scroll', throttled)
         },
-        
+
     }
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
+html
+  box-sizing: border-box
+  font-size: 16px
+  font-family: sans-serif
+
+*, *:before, *:after
+  box-sizing: border-box
+
 .content
   max-width: 1170px
   margin: 0 auto
