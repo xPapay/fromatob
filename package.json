@@ -41,6 +41,7 @@
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vuejs-datepicker": "^1.5.4"
   }
 }

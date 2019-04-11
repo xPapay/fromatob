@@ -10,7 +10,6 @@
 <script>
   import 'normalize.css'
   import { throttle } from 'lodash'
-  // import TheNavigation from '@/components/TheNavigation'
     export default {
         name: 'app',
         components: {
@@ -44,6 +43,7 @@ html
   box-sizing: border-box
   font-size: 16px
   font-family: sans-serif
+  color: #333
 
 *, *:before, *:after
   box-sizing: border-box
