@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button v-for="tab in tabs" @click="currentTabComponent = tab">{{ getLabel(tab) }}</button>
-        <component :is="currentTabComponent"></component>
+        <button v-for="tab in tabs" @click="() => handleClick(tab)">{{ getLabel(tab) }}</button>
+        <component v-show="expanded" :is="currentTabComponent"></component>
     </div>
 </template>
 
@@ -14,13 +14,26 @@
 
         data() {
             return {
-                currentTabComponent: 'TabPassenger'
+                currentTabComponent: 'TabPassenger',
+                expanded: false
             }
         },
 
         methods: {
             getLabel(component) {
                 return component.substring(3)
+            },
+            
+            handleClick(clickedTab) {
+                this.toggleTabs(clickedTab)
+                this.currentTabComponent = clickedTab
+            },
+
+            toggleTabs(clickedTab) {
+                if (this.currentTabComponent === clickedTab) {
+                    return this.expanded = !this.expanded
+                }
+                this.expanded = true
             }
         },
 
