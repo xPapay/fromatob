@@ -34,6 +34,8 @@
           v-model="departureDate"
         />
       </div>
+
+      <tabs :tabs="['Passenger', 'Vehicle']" />
     </header>
     <section class="section">
       <div class="content">
@@ -47,12 +49,14 @@
     import hero from 'assets/images/hero.jpg'
     import TextInput from '@/components/TextInput'
     import DateInput from '@/components/DateInput'
+    import Tabs from '@/components/Tabs'
     
     export default {
       name: 'HomePage',
       components: {
         TextInput,
-        DateInput
+        DateInput,
+        Tabs
       },
       data() {
         return {
