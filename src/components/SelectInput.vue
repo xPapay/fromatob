@@ -3,24 +3,23 @@
           :label="label" 
           :icon="icon"
     >
-          <input
-            class="input-box__input" 
-            id="input" 
-            v-bind="$attrs"
-            @input="$emit('input', $event)"
-            :value="value"
-          >
+        <select class="input-box__input" :value="value" @change="$emit('input', $event)">
+            <option v-for="option in options" :key="option" v-text="option" selected="option === value"></option>
+        </select>
     </base-input>
 </template>
 
 <script>
     import BaseInput from '@/components/BaseInput'
     export default {
-        inheritAttrs: false,
         components: {
             BaseInput
         },
         props: {
+            options: {
+                type: Array,
+                required: true
+            },
             label: {
                 type: String,
                 required: false
@@ -30,13 +29,15 @@
                 required: false
             },
             value: {
-                type: [String, Number],
+                type: [String],
                 required: false
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+.input-box__input
+    background: white
 
 </style>

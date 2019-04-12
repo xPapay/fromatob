@@ -8,6 +8,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
     mode: isProd ? 'production' : 'development',
+    devtool: isProd ? false : '#cheap-module-source-map',
     entry: {
         app: path.resolve(__dirname, '../src/main.js')
     },
@@ -86,13 +87,13 @@ module.exports = {
         //         return 'script'
         //     }
         // })
-        new DynamicPreloadWebpackPlugin({
-            // routeModuleMap: {
-            //     '/': '@/views/HomePage'
-            // },
-            urls: {
-                '/': ['@/components/TheNavigation']
-            }
-        })
+        // new DynamicPreloadWebpackPlugin({
+        //     // routeModuleMap: {
+        //     //     '/': '@/views/HomePage'
+        //     // },
+        //     urls: {
+        //         '/': ['@/components/TheNavigation']
+        //     }
+        // })
     ]
 }

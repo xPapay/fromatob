@@ -35,7 +35,7 @@
         />
       </div>
 
-      <tabs/>
+      <route-options/>
     </header>
     <section class="section">
       <div class="content">
@@ -49,14 +49,14 @@
     import hero from 'assets/images/hero.jpg'
     import TextInput from '@/components/TextInput'
     import DateInput from '@/components/DateInput'
-    import Tabs from '@/components/Tabs'
+    import RouteOptions from '@/components/RouteOptions'
     
     export default {
       name: 'HomePage',
       components: {
         TextInput,
         DateInput,
-        Tabs
+        RouteOptions
       },
       data() {
         return {
@@ -75,7 +75,7 @@
 
 <style scoped lang="sass">
 .header
-  height: 450px
+  min-height: 450px
   background-size: cover
   background-repeat: no-repeat
   background-position: center center

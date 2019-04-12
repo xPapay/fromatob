@@ -2,7 +2,7 @@
     <div class="input-box-wrapper">
         <label class="label" for="input">{{ label }}</label>
         <div class="input-box">
-            <base-icon class="input-box__icon" :name="icon" height="2rem" width="2rem"/>
+            <base-icon class="input-box__icon" :name="icon" />
             <slot/>
         </div>
     </div>
@@ -39,7 +39,6 @@
 
 .input-box
     position: relative
-    height: 3rem
     width: 100%
 
 .input-box__icon
@@ -48,11 +47,11 @@
     left: 5px
     width: 2rem
     height: 100%
-    z-index: 999
+    z-index: 10
 
 ::v-deep .input-box__input
     padding-left: 2.25rem
-    height: 100%
+    height: 3rem
     width: 100%
 
     &:focus
