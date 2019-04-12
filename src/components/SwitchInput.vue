@@ -38,7 +38,9 @@
     align-items: center
 
 .label
-    text-transform: capitalize
+    text-transform: uppercase
+    font-size: 0.8rem
+    font-weight: lighter
 
 .checkbox
   display: none
@@ -47,7 +49,8 @@
   display: block
   width: 60px
   height: 30px
-  background-color: pink
+  background-color: $secondary-color
+  opacity: 0.7
   border-radius: 15px
   position: relative
   cursor: pointer
@@ -60,10 +63,10 @@
   transform: translateY(-50%)
   width: 35px
   height: 35px
-  background: lightgray
+  background: white
   border-radius: 50%
-  border: 1px solid rgb(180, 180, 180)
-  box-shadow: 0 0 8px 1px rgba(180, 180, 180, 0.8)
+  border: 1px solid $medium-gray
+  box-shadow: 0 0 4px -2px rgba(100, 100, 100, 0.8)
   transition: all 0.2s
   
 .checkbox:checked + .switch__round

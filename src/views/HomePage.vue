@@ -3,39 +3,46 @@
     <header class="header" :style="{backgroundImage: `url(${hero})`}">
       <div class="content">
         <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
-        <h3>All the best deals and direct booking in one search engine</h3>
-        
-        <text-input
-          key="start-location" 
-          v-model="start" 
-          placeholder="City, Station or Airport" 
-          label="Start" 
-          icon="icon-location"
-        />
-        <text-input
-          key="destination-location" 
-          v-model="destination" 
-          placeholder="City, Station or Airport" 
-          label="Arrival" 
-          icon="icon-location"
-        />
-        
-        <date-input
-          key="departure-date" 
-          placeholder="Depart" 
-          label="Depart"
-          v-model="departureDate"
-        />
+        <h3 class="header__subheadline">All the best deals and direct booking in one search engine</h3>
+        <div class="hero">
+          <div class="flex flex--space-between">
+            <text-input
+              class="flex__input"
+              key="start-location" 
+              v-model="start" 
+              placeholder="City, Station or Airport" 
+              label="Start" 
+              icon="icon-location"
+            />
+            <text-input
+              class="flex__input"
+              key="destination-location" 
+              v-model="destination" 
+              placeholder="City, Station or Airport" 
+              label="Arrival" 
+              icon="icon-location"
+            />
+            
+            <date-input
+              class="flex__input"
+              key="departure-date" 
+              placeholder="Depart" 
+              label="Depart"
+              v-model="departureDate"
+            />
 
-        <date-input
-          key="return-date" 
-          placeholder="Return" 
-          label="Return (optional)"
-          v-model="departureDate"
-        />
+            <date-input
+              class="flex__input"
+              key="return-date" 
+              placeholder="Return" 
+              label="Return (optional)"
+              v-model="returnDate"
+            />
+          </div>
+          <route-options/>
+        </div>
       </div>
 
-      <route-options/>
     </header>
     <section class="section">
       <div class="content">
@@ -62,7 +69,8 @@
         return {
           start: '',
           destination: '',
-          departureDate: ''
+          departureDate: '',
+          returnDate: ''
         }
       },
       computed: {
@@ -79,7 +87,29 @@
   background-size: cover
   background-repeat: no-repeat
   background-position: center center
+  padding-bottom: 1rem
 
 .header__headline
   margin-top: 0
+
+.header__headline,
+.header__subheadline
+  color: white
+
+.hero
+  background: white
+  padding: 1rem
+  border-radius: 3px
+  border: 1px solid $light-gray
+  overflow-x: hidden
+
+.flex
+  display: flex
+
+.flex--space-between
+  justify-content: space-between
+
+.flex__input
+  margin-left: 0.5rem
+  margin-right: 0.5rem
 </style>

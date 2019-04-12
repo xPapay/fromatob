@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h2>And here vehicles</h2>
+    <div class="vehicles">
         <switch-input 
             v-for="(status, vehicle) in vehicles" 
             :label="vehicle" 
@@ -9,10 +8,6 @@
             :checked="status"
             @change="checked => changeVehiclePreferences({ vehicle, status: checked })"
         />
-        <!-- <switch-input label="Bus" icon="icon-location"/>
-        <switch-input label="Plane" icon="icon-location"/>
-        <switch-input label="Carpool" icon="icon-location"/> -->
-
     </div>
 </template>
 
@@ -29,6 +24,8 @@
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="sass" scoped>
+.vehicles
+    display: flex
+    justify-content: space-between
 </style>

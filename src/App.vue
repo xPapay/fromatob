@@ -51,4 +51,17 @@ html
 .content
   max-width: 1170px
   margin: 0 auto
+  padding: 0 1rem
+
+.cta-button
+  background: $secondary-color
+  border: none
+  border-radius: 5px
+  color: white
+  padding: 0.75rem 2rem
+  text-transform: uppercase
+  cursor: pointer
+
+  &:hover
+    background: $secondary-darker-color
 </style>

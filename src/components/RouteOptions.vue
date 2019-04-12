@@ -1,22 +1,22 @@
 <template>
-    <div class="tab">
-        <div class="tab__heads">
+    <div class="tabs">
+        <div class="tab-bookmarks">
             <div 
                 v-for="tab in tabs" 
-                class="tab__head" 
-                :class="{'tab__head--active': expanded && tab === currentTabComponent}" 
+                class="tab-bookmark" 
+                :class="{'tab-bookmark--active': expanded && tab === currentTabComponent}" 
                 :key="tab" 
                 @click="() => handleClick(tab)"
             >
-                <base-icon name="icon-passenger-filled" class="tab__icon" height="2rem" width="2rem" />
-                <div class="tab__description">{{ describe(tab) }}</div>
-                <button>Change</button>
+                <base-icon name="icon-passenger-filled" class="tab-bookmark__icon" height="2rem" width="2rem" />
+                <div class="tab-bookmark__description">{{ describe(tab) }}</div>
+                <button class="tab-bookmark__button">Change</button>
             </div>
-            <div class="tab__head search">
-                <button>Search</button>
+            <div class="tab-bookmark tab-bookmark--cta">
+                <button class="cta-button tab-bookmark__cta-button">Search</button>
             </div>
         </div>
-        <component class="tab__body" v-show="expanded" :is="currentTabComponent"></component>
+        <component class="tab-body" v-show="expanded" :is="currentTabComponent"></component>
     </div>
 </template>
 
@@ -58,9 +58,17 @@
                     return `${passengerCount} ${passenger}, ${anyBahnCard} Bahncard`
                 }
                 if (tab === 'TabVehicle') {
-                    return Object.values(this.vehicles).every(vehicle => vehicle)
-                        ? 'All vehicles'
-                        : `Only ${Object.keys(this.vehicles).filter(vehicle => this.vehicles[vehicle]).join(', ')}`
+                    if (Object.values(this.vehicles).every(vehicle => vehicle)) {
+                        return 'All vehicles'
+                    }
+
+                    const selectedVehicles = Object.keys(this.vehicles).filter(vehicle => this.vehicles[vehicle])
+
+                    if (selectedVehicles.length === 0) {
+                        return 'No vehicles'
+                    }
+
+                    return `Only ${selectedVehicles.join(', ')}`
                 }
                 return ''
             }
@@ -76,20 +84,62 @@
 </script>
 
 <style lang="sass" scoped>
-.tab__heads
+.tab-bookmarks
     display: flex
     justify-content: space-between
+    margin-top: 1rem
 
-.tab__head
+.tab-bookmarks,
+.tab-body
+    margin-left: calc(-1rem - 1px)
+    margin-right: calc(-1rem - 1px)
+
+.tab-body
+    padding: 2rem 1rem
+
+.tab-bookmark
     flex-basis: 33%
+    flex: 1
     display: flex
     justify-content: space-between
     align-items: center
-    border: 1px solid #333
+    border-right: 1px solid $medium-gray
+    border-top: 1px solid $medium-gray
+    border-bottom: 1px solid $medium-gray
+    padding: 1rem
 
-.tab__head--active,
-.tab__body
-    background: lightgray
+    &:not(.tab-bookmark--cta)
+        cursor: pointer
+
+    &:not(.tab-bookmark--cta):not(.tab-bookmark--active):hover
+        background: darken(white, 2%)
+
+.tab-bookmark__icon
+    flex-shrink: 0
+        
+.tab-bookmark__description
+    margin-right: auto
+    margin-left: 0.5rem
+    font-weight: bolder
+    font-size: 0.8rem
+
+.tab-bookmark__button
+    background: none
+    border: 1px solid $dark-gray
+    border-radius: 5px
+    padding: 0.5rem
+    text-transform: uppercase
+    color: $dark-gray
+    font-size: 0.8rem
+    font-weight: lighter
+    cursor: pointer
+
+.tab-bookmark__cta-button
+    margin-left: auto
+
+.tab-bookmark--active,
+.tab-body
+    background: $light-gray
 
 .search
     justify-content: flex-end

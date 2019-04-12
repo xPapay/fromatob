@@ -35,7 +35,7 @@
     display: block
     text-transform: uppercase
     font-size: 0.75rem
-    margin-bottom: 0.5rem
+    margin-bottom: 0.25rem
 
 .input-box
     position: relative
@@ -53,9 +53,10 @@
     padding-left: 2.25rem
     height: 3rem
     width: 100%
+    border: 1px solid $dark-gray
+    border-radius: 3px
 
     &:focus
-        font-weight: bolder
         border: 1px solid #42829B
         outline: none
 </style>
