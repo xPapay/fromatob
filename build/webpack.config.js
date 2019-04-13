@@ -3,6 +3,8 @@ const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const DynamicPreloadWebpackPlugin = require('dynamic-preload-webpack-plugin')
 
@@ -89,6 +91,9 @@ const config = {
         contentBase: path.resolve(__dirname, '../dist'),
         historyApiFallback: true
     },
+    optimization: {
+        minimizer: []
+    },
     plugins: [
         new VueLoaderPlugin(),
         new HTMLWebpackPlugin({
@@ -116,6 +121,10 @@ const config = {
     ]
 }
 
-isProd && config.plugins.push(new MiniCssExtractPlugin())
+if (isProd) {
+    config.plugins.push(new MiniCssExtractPlugin())
+    config.optimization.minimizer.push(new TerserJSPlugin(), new OptimizeCSSAssetsPlugin())
+}
+
 
 module.exports = config
