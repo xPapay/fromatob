@@ -24,11 +24,6 @@
                 type: [Number, String],
                 default: '24'
             }
-        },
-        computed: {
-            sprite() {
-                return sprite
-            }
         }
     }
 </script>
