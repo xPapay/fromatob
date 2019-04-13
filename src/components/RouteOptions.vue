@@ -91,6 +91,7 @@
 <style lang="sass" scoped>
 .tab-bookmarks
     display: flex
+    flex-wrap: wrap
     justify-content: space-between
     margin-top: 1rem
 
@@ -160,5 +161,9 @@
     
     .tabs__cta-button
         display: block
+
+@media screen and (max-width: 750px)
+    .tab-bookmark
+        flex-basis: 100%
 
 </style>

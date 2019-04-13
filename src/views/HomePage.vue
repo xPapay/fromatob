@@ -185,7 +185,7 @@
   .flex__start-location,
   .flex__destination
     flex-basis: 100%
-    margin-top: 1.5rem
+    margin-bottom: 1.25rem
 
   .icon-invert
     display: none
