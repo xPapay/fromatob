@@ -3,7 +3,7 @@
         <switch-input 
             v-for="(status, vehicle) in vehicles" 
             :label="vehicle" 
-            icon="icon-location" 
+            :icon="getIcon(vehicle)" 
             :key="vehicle"
             :checked="status"
             @change="checked => changeVehiclePreferences({ vehicle, status: checked })"
@@ -20,7 +20,12 @@
             SwitchInput,
         },
         computed: mapState(['vehicles']),
-        methods: mapActions(['changeVehiclePreferences'])
+        methods: {
+            getIcon(vehicle) {
+                return `icon-${vehicle}`
+            },
+            ...mapActions(['changeVehiclePreferences'])
+        }
     }
 </script>
 

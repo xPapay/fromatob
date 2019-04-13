@@ -5,7 +5,7 @@
         <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
         <h3 class="header__subheadline">All the best deals and direct booking in one search engine</h3>
         <div class="hero">
-          <div class="flex flex--space-between">
+          <div class="flex flex--space-between flex-vertical-middle">
             <text-input
               class="flex__input"
               key="start-location" 
@@ -14,6 +14,7 @@
               label="Start" 
               icon="icon-location"
             />
+            <base-icon name="icon-invert" class="icon-invert"/>
             <text-input
               class="flex__input"
               key="destination-location" 
@@ -58,13 +59,15 @@
     import TextInput from '@/components/TextInput'
     import DateInput from '@/components/DateInput'
     import RouteOptions from '@/components/RouteOptions'
+    import BaseIcon from '@/components/BaseIcon'
     
     export default {
       name: 'HomePage',
       components: {
         TextInput,
         DateInput,
-        RouteOptions
+        RouteOptions,
+        BaseIcon
       },
       data() {
         return {
@@ -102,7 +105,15 @@
   padding: 1rem
   border-radius: 3px
   border: 1px solid $light-gray
-  overflow-x: hidden
+
+.icon-invert
+  margin-top: 1rem
+  transform: rotateZ(90deg)
+  opacity: 0.6
+  cursor: pointer
+
+  &:hover
+    opacity: 1
 
 .flex
   display: flex
@@ -113,4 +124,7 @@
 .flex__input
   margin-left: 0.5rem
   margin-right: 0.5rem
+
+.flex-vertical-middle
+  align-items: center
 </style>

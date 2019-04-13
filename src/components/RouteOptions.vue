@@ -8,8 +8,8 @@
                 :key="tab" 
                 @click="() => handleClick(tab)"
             >
-                <base-icon name="icon-passenger-filled" class="tab-bookmark__icon" height="2rem" width="2rem" />
-                <div class="tab-bookmark__description">{{ describe(tab) }}</div>
+                <base-icon :name="getTabIcon(tab)" class="tab-bookmark__icon" height="2rem" width="2rem" />
+                <div class="tab-bookmark__description">{{ describeTab(tab) }}</div>
                 <button class="tab-bookmark__button">Change</button>
             </div>
             <div class="tab-bookmark tab-bookmark--cta">
@@ -50,7 +50,11 @@
                 this.expanded = true
             },
 
-            describe(tab) {
+            getTabIcon(tab) {
+                return tab === 'TabPassenger' ? 'icon-passenger-filled' : 'icon-vehicles'
+            },
+
+            describeTab(tab) {
                 if (tab === 'TabPassenger') {
                     const passengerCount = this.passengers.length
                     const passenger = passengerCount < 2 ? 'Passenger' : 'Passengers'

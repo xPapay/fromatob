@@ -3,7 +3,7 @@
         <div class="passengers">
             <div v-for="passenger in passengers" class="passenger">
                 <text-input 
-                    icon="icon-passenger-filled" 
+                    icon="icon-passenger" 
                     label="Age" 
                     type="number" 
                     class="input-age passenger__age"
@@ -13,7 +13,7 @@
                 <select-input 
                     :options="bahnCardOptions" 
                     label="Bahncard"
-                    icon="icon-passenger-filled"
+                    icon="icon-bahncard"
                     :value="passenger.bahnCard"
                     @input="event => changeBahnCard({ passenger, newBahnCard: event.target.value })"
                 />

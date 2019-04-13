@@ -1,7 +1,7 @@
 <template>
     <div class="switch-input">
-        <label :for="label" v-if="icon" class="icon">
-            <base-icon :name="icon"/>
+        <label :for="label" v-if="icon">
+            <base-icon :name="icon" class="icon"/>
         </label>
         <label class="switch">
             <input :id="label" type="checkbox" class="checkbox" :checked="checked" @change="$emit('change', $event.target.checked)">
@@ -72,5 +72,9 @@
 .checkbox:checked + .switch__round
   left: 100%
   transform: translate(-100%, -50%)
+
+.icon
+    height: 2rem
+    width: auto
 
 </style>
