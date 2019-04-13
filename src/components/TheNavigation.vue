@@ -5,9 +5,9 @@
                 <img :src="require('assets/images/logo.svg')"/>
             </router-link>
             <div class="navigation-bar__menu">
-                <router-link key="home" :to="{ name: 'home' }" class="navigation-bar__menu-item">Train</router-link>
-                <router-link key="results" :to="{ name: 'results' }" class="navigation-bar__menu-item">Accomodation</router-link>
-                <router-link key="#" to="#" class="navigation-bar__menu-item">Sign in</router-link>
+                <router-link key="train" to="#" class="navigation-bar__menu-item">Train</router-link>
+                <router-link key="accomodation" to="#" class="navigation-bar__menu-item">Accomodation</router-link>
+                <router-link key="sign-in" to="#" class="navigation-bar__menu-item">Sign in</router-link>
             </div>
         </div>
     </nav>
