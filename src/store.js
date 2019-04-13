@@ -7,6 +7,10 @@ const defaultPassenger = () => ({ id: Math.floor((Math.random() * 100000)), age:
 
 export default new Vuex.Store({
     state: {
+        startLocation: '',
+        destination: '',
+        departureDate: '',
+        returnDate: '',
         passengers: [
             defaultPassenger()
         ],
@@ -28,8 +32,11 @@ export default new Vuex.Store({
         CHANGE_AGE: (state, { index, age }) => state.passengers.splice(index, 1, { ...state.passengers[index], age }),
         CHANGE_BAHNCARD: (state, { index, bahnCard }) => state.passengers.splice(index, 1, { ...state.passengers[index], bahnCard }),
         ADD_PASSENGER: (state, passenger) => state.passengers.push(passenger),
-
-        CHANGE_VEHICLE_PREFERENCES: (state, { vehicle, status }) => state.vehicles[vehicle] = status
+        CHANGE_VEHICLE_PREFERENCES: (state, { vehicle, status }) => state.vehicles[vehicle] = status,
+        SET_START_LOCATION: (state, location) => state.startLocation = location,
+        SET_DESTINATION: (state, location) => state.destination = location,
+        SET_DEPARTURE_DATE: (state, date) => state.departureDate = date,
+        SET_RETURN_DATE: (state, date) => state.returnDate = date
     },
     actions: {
         changeAge({ commit, getters }, { passenger, newAge }) {
@@ -45,9 +52,20 @@ export default new Vuex.Store({
         addPassenger({ commit }) {
             commit('ADD_PASSENGER', defaultPassenger())
         },
-
         changeVehiclePreferences({ commit }, { vehicle, status }) {
             commit('CHANGE_VEHICLE_PREFERENCES', { vehicle, status })
+        },
+        setStartLocation({ commit }, location) {
+            commit('SET_START_LOCATION', location)
+        },
+        setDestination({ commit }, location) {
+            commit('SET_DESTINATION', location)
+        },
+        setDepartureDate({ commit }, date) {
+            commit('SET_DEPARTURE_DATE', date)
+        },
+        setReturnDate({ commit }, date) {
+            commit('SET_RETURN_DATE', date)
         }
     },
     getters: {

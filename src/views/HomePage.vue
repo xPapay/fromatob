@@ -8,8 +8,9 @@
           <div class="flex flex--space-between flex-vertical-middle">
             <text-input
               class="flex__input"
-              key="start-location" 
-              v-model="start" 
+              key="start-location"
+              :value="startLocation"
+              @input="event => setStartLocation(event.target.value)" 
               placeholder="City, Station or Airport" 
               label="Start" 
               icon="icon-location"
@@ -17,8 +18,9 @@
             <base-icon name="icon-invert" class="icon-invert"/>
             <text-input
               class="flex__input"
-              key="destination-location" 
-              v-model="destination" 
+              key="destination-location"
+              :value="destination"
+              @input="event => setDestination(event.target.value)" 
               placeholder="City, Station or Airport" 
               label="Arrival" 
               icon="icon-location"
@@ -29,7 +31,8 @@
               key="departure-date" 
               placeholder="Depart" 
               label="Depart"
-              v-model="departureDate"
+              :value="departureDate"
+              @input="date => setDepartureDate(date)"
             />
 
             <date-input
@@ -37,7 +40,8 @@
               key="return-date" 
               placeholder="Return" 
               label="Return (optional)"
-              v-model="returnDate"
+              :value="returnDate"
+              @input="date => setReturnDate(date)"
               icon="icon-calendar-return"
             />
           </div>
@@ -60,6 +64,7 @@
     import DateInput from '@/components/DateInput'
     import RouteOptions from '@/components/RouteOptions'
     import BaseIcon from '@/components/BaseIcon'
+    import { mapState, mapActions } from 'vuex'
     
     export default {
       name: 'HomePage',
@@ -69,18 +74,12 @@
         RouteOptions,
         BaseIcon
       },
-      data() {
-        return {
-          start: '',
-          destination: '',
-          departureDate: '',
-          returnDate: ''
-        }
-      },
+      methods: mapActions(['setStartLocation', 'setDestination', 'setDepartureDate', 'setReturnDate']),
       computed: {
         hero() {
           return hero
-        }
+        },
+        ...mapState(['startLocation', 'destination', 'departureDate', 'returnDate'])
       }
     }
 </script>
