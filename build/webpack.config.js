@@ -2,12 +2,13 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const DynamicPreloadWebpackPlugin = require('dynamic-preload-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-module.exports = {
+const config = {
     mode: isProd ? 'production' : 'development',
     devtool: isProd ? false : '#cheap-module-source-map',
     entry: {
@@ -40,12 +41,15 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    isProd ? { loader: MiniCssExtractPlugin.loader } : 'style-loader', 
+                    'css-loader'
+                ]
             },
             {
                 test: /\.sass$/,
                 use: [
-                    'style-loader', 
+                    isProd ? { loader: MiniCssExtractPlugin.loader } : 'style-loader', 
                     'css-loader', 
                     {
                         loader: 'sass-loader',
@@ -111,3 +115,7 @@ module.exports = {
         // })
     ]
 }
+
+isProd && config.plugins.push(new MiniCssExtractPlugin())
+
+module.exports = config
