@@ -17,6 +17,9 @@
             </div>
         </div>
         <component class="tab-body" v-show="expanded" :is="currentTabComponent"></component>
+        <label class="tabs__footer">
+            <input type="checkbox" checked> Find accomodation with Booking.com
+        </label>
         <button class="cta-button tabs__cta-button">Search</button>
     </div>
 </template>
@@ -147,6 +150,13 @@
     width: 100%
     margin-top: 1rem
     display: none
+
+.tabs__footer
+    display: block
+    font-size: 0.75rem
+    margin-top: 1rem
+    font-weight: lighter
+    color: #666
 
 .tab-bookmark--active,
 .tab-body

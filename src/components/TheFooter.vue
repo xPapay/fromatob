@@ -1,6 +1,6 @@
 <template>
-    <footer>
-        This is footer
+    <footer class="footer">
+        <h3>This footer was dynamically loaded as you scrolled down here</h3>
     </footer>
 </template>
 
@@ -15,6 +15,14 @@
     }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+.footer
+    width: 100%
+    background: $primary-color
+    color: white
+    text-align: center
+    font-weight: normal
+    padding-top: 10%
+    padding-bottom: 10%
 
 </style>

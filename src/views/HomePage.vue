@@ -2,66 +2,67 @@
   <div>
     <header class="header" :style="{backgroundImage: `url(${hero})`}">
       <div class="content">
-        <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
-        <h3 class="header__subheadline">All the best deals and direct booking in one search engine</h3>
-        <div class="hero">
-          <div class="flex flex--wrap flex--space-between flex--vertical-middle">
-            <text-input
-              class="flex__input flex__start-location"
-              key="start-location"
-              :value="startLocation"
-              @input="event => setStartLocation(event.target.value)" 
-              placeholder="City, Station or Airport" 
-              label="Start" 
-              icon="icon-location"
-            />
-            <div @click="swapDestinations" class="icon-invert">
-              <base-icon name="icon-invert"/>
-            </div>
-            <div class="flex__input flex__destination">
+        <div class="flex flex--column">
+          <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
+          <h3 class="header__subheadline">All the best deals and direct booking in one search engine</h3>
+          <div class="hero flex__hero">
+            <div class="flex flex--wrap flex--space-between flex--vertical-middle">
               <text-input
-                key="destination-location"
-                :value="destination"
-                @input="event => setDestination(event.target.value)" 
+                class="flex__input flex__start-location"
+                key="start-location"
+                :value="startLocation"
+                @input="event => setStartLocation(event.target.value)" 
                 placeholder="City, Station or Airport" 
-                label="Arrival" 
+                label="Start" 
                 icon="icon-location"
               />
-              <div @click="swapDestinations" class="icon-invert icon-invert--inlined">
+              <div @click="swapDestinations" class="icon-invert">
                 <base-icon name="icon-invert"/>
               </div>
-            </div>
-            <div class="flex flex--space-between flex--vertical-middle flex__dates">
-              <date-input
-                class="flex__input"
-                key="departure-date" 
-                placeholder="Depart" 
-                label="Depart"
-                :value="departureDate"
-                :disabled-dates="disabledDepartureDates"
-                @input="date => setDepartureDate(date)"
-              />
+              <div class="flex__input flex__destination">
+                <text-input
+                  key="destination-location"
+                  :value="destination"
+                  @input="event => setDestination(event.target.value)" 
+                  placeholder="City, Station or Airport" 
+                  label="Arrival" 
+                  icon="icon-location"
+                />
+                <div @click="swapDestinations" class="icon-invert icon-invert--inlined">
+                  <base-icon name="icon-invert"/>
+                </div>
+              </div>
+              <div class="flex flex--space-between flex--vertical-middle flex__dates">
+                <date-input
+                  class="flex__input"
+                  key="departure-date" 
+                  placeholder="Depart" 
+                  label="Depart"
+                  :value="departureDate"
+                  :disabled-dates="disabledDepartureDates"
+                  @input="date => setDepartureDate(date)"
+                />
 
-              <date-input
-                class="flex__input"
-                key="return-date" 
-                placeholder="Return" 
-                label="Return (optional)"
-                :value="returnDate"
-                :disabled-dates="disabledReturnDates"
-                @input="date => setReturnDate(date)"
-                icon="icon-calendar-return"
-              />
+                <date-input
+                  class="flex__input"
+                  key="return-date" 
+                  placeholder="Return" 
+                  label="Return (optional)"
+                  :value="returnDate"
+                  :disabled-dates="disabledReturnDates"
+                  @input="date => setReturnDate(date)"
+                  icon="icon-calendar-return"
+                />
+              </div>
             </div>
-          </div>
-          <route-options/>
+            <route-options/>
+          </div><!-- .hero -->
         </div>
       </div>
-
     </header>
     <section class="section">
       <div class="content">
-        <h1>Hello from HomePage</h1>
+        <h1>This is just placeholder</h1>
       </div>
     </section>
   </div>
@@ -125,11 +126,18 @@
   padding-bottom: 1rem
 
 .header__headline
+  padding-top: 3.75rem
   margin-top: 0
+  font-size: 2.75rem
+  font-weight: normal
 
 .header__headline,
 .header__subheadline
   color: white
+
+.header__subheadline
+  margin-bottom: 5rem
+  font-weight: bolder
 
 .hero
   background: white
@@ -166,6 +174,9 @@
 .flex--vertical-middle
   align-items: center
 
+.flex--column
+  flex-direction: column
+
 .flex__input
   margin-left: 0.5rem
   margin-right: 0.5rem
@@ -192,5 +203,18 @@
   
   .icon-invert--inlined
     display: block
+
+@media screen and (max-width: 450px)
+  .flex__hero
+    order: -1
+    margin-top: 1rem
+
+  .header__headline
+    font-size: 2rem
+    padding-top: 1rem
+    font-weight: bolder
+
+  .header__subheadline
+    display: none
 
 </style>

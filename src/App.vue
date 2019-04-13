@@ -2,7 +2,7 @@
   <div>
     <the-navigation />
     <router-view />
-    <div class="placeholder" style="height: 2000px;"></div>
+    <div class="placeholder" style="height: 800px;"></div>
     <the-footer v-if="loadFooter" />
   </div>
 </template>
@@ -64,4 +64,9 @@ html
 
   &:hover
     background: $secondary-darker-color
+
+@media screen and (max-width: 450px)
+  html
+    font-size: 14px
+  
 </style>
