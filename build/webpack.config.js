@@ -61,10 +61,11 @@ module.exports = {
                 exclude: path.resolve(__dirname, '../src/assets/images/sprites'),
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
                             context: path.resolve(__dirname, '../src'),
-                            name: '[path][name]-[hash].[ext]'
+                            name: '[path][name]-[hash].[ext]',
+                            limit: 8000
                         }
                     }
                 ]
