@@ -66,9 +66,17 @@ export default new Vuex.Store({
         },
         setReturnDate({ commit }, date) {
             commit('SET_RETURN_DATE', date)
+        },
+        swapDestinations({ commit, getters }) {
+            const startLocation = getters.startLocation
+            const destination = getters.destination
+            commit('SET_START_LOCATION', destination)
+            commit('SET_DESTINATION', startLocation)
         }
     },
     getters: {
-        getPassengerIndex: state => passenger => state.passengers.indexOf(passenger)
+        getPassengerIndex: state => passenger => state.passengers.indexOf(passenger),
+        startLocation: state => state.startLocation,
+        destination: state => state.destination
     }
 })

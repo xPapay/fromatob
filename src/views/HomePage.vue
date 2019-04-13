@@ -15,7 +15,9 @@
               label="Start" 
               icon="icon-location"
             />
-            <base-icon name="icon-invert" class="icon-invert"/>
+            <div @click="swapDestinations">
+              <base-icon name="icon-invert" class="icon-invert"/>
+            </div>
             <text-input
               class="flex__input"
               key="destination-location"
@@ -76,7 +78,13 @@
         RouteOptions,
         BaseIcon
       },
-      methods: mapActions(['setStartLocation', 'setDestination', 'setDepartureDate', 'setReturnDate']),
+      methods: mapActions([
+        'setStartLocation', 
+        'setDestination', 
+        'setDepartureDate', 
+        'setReturnDate',
+        'swapDestinations'
+      ]),
       computed: {
         hero() {
           return hero
