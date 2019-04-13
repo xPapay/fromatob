@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js,.vue src",
-    "build": "rimraf dist && webpack --config ./build/webpack.config.js",
-    "dev": "npm run build && webpack-dev-server --open --config ./build/webpack.config.js",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack -p --config ./build/webpack.config.js",
+    "dev": "webpack-dev-server --mode development --open --config ./build/webpack.config.js",
     "debug": "rimraf dist && node-nightly --inspect-brk ./node_modules/.bin/webpack --config ./build/webpack.config.js"
   },
   "keywords": [],
