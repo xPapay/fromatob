@@ -1,6 +1,7 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const DynamicPreloadWebpackPlugin = require('dynamic-preload-webpack-plugin')
 
@@ -57,12 +58,23 @@ module.exports = {
             },
             {
                 test: /\.(svg|jpg|woff)$/,
+                exclude: path.resolve(__dirname, '../src/assets/images/sprites'),
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[name]-[hash].[ext]'
+                            context: path.resolve(__dirname, '../src'),
+                            name: '[path][name]-[hash].[ext]'
                         }
+                    }
+                ]
+            },
+            {
+                test: /\.svg$/,
+                include: path.resolve(__dirname, '../src/assets/images/sprites'),
+                use: [
+                    {
+                        loader: 'svg-sprite-loader',
                     }
                 ]
             }
@@ -77,6 +89,7 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, '../src/template.html')
         }),
+        new SpriteLoaderPlugin()
         // new PreloadWebpackPlugin({
         //     rel: 'preload',
         //     // include: 'allAssets',

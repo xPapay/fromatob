@@ -1,11 +1,15 @@
 <template>
     <svg class="icon" :width="width" :height="height">
-        <use :xlink:href="`${sprite}#${name}`"/>
+        <use :xlink:href="`#${name}`"/>
     </svg>
 </template>
 
 <script>
-    import sprite from 'assets/images/sprite.svg'
+    function importAll (r) {
+        return r.keys().forEach(r);
+    }
+
+    importAll(require.context('assets/images/sprites', false, /\.svg$/));
     export default {
         props: {
             name: {

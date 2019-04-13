@@ -37,6 +37,7 @@
               placeholder="Return" 
               label="Return (optional)"
               v-model="returnDate"
+              icon="icon-calendar-return"
             />
           </div>
           <route-options/>
