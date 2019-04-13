@@ -32,6 +32,7 @@
               placeholder="Depart" 
               label="Depart"
               :value="departureDate"
+              :disabled-dates="disabledDepartureDates"
               @input="date => setDepartureDate(date)"
             />
 
@@ -41,6 +42,7 @@
               placeholder="Return" 
               label="Return (optional)"
               :value="returnDate"
+              :disabled-dates="disabledReturnDates"
               @input="date => setReturnDate(date)"
               icon="icon-calendar-return"
             />
@@ -78,6 +80,23 @@
       computed: {
         hero() {
           return hero
+        },
+        yesterday() {
+          const yesterday = new Date()
+          yesterday.setDate(yesterday.getDate() -1)
+          return yesterday
+        },
+        disabledDepartureDates() {
+          if (this.returnDate) {
+            return { to: this.returnDate }
+          }
+          return { to: this.yesterday }
+        },
+        disabledReturnDates() {
+          if (this.departureDate) {
+            return { to: this.departureDate }
+          }
+          return { to: this.yesterday }
         },
         ...mapState(['startLocation', 'destination', 'departureDate', 'returnDate'])
       }
