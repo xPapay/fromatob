@@ -28,9 +28,6 @@
 </script>
 
 <style lang="sass" scoped>
-.input-box-wrapper
-    max-width: 320px
-
 .label
     display: block
     text-transform: uppercase

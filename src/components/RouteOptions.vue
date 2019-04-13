@@ -17,6 +17,7 @@
             </div>
         </div>
         <component class="tab-body" v-show="expanded" :is="currentTabComponent"></component>
+        <button class="cta-button tabs__cta-button">Search</button>
     </div>
 </template>
 
@@ -141,11 +142,23 @@
 .tab-bookmark__cta-button
     margin-left: auto
 
+.tabs__cta-button
+    width: 100%
+    margin-top: 1rem
+    display: none
+
 .tab-bookmark--active,
 .tab-body
     background: $light-gray
 
 .search
     justify-content: flex-end
+
+@media screen and (max-width: 950px)
+    .tab-bookmark--cta
+        display: none
+    
+    .tabs__cta-button
+        display: block
 
 </style>

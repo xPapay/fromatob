@@ -5,9 +5,9 @@
         <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
         <h3 class="header__subheadline">All the best deals and direct booking in one search engine</h3>
         <div class="hero">
-          <div class="flex flex--space-between flex-vertical-middle">
+          <div class="flex flex--wrap flex--space-between flex--vertical-middle">
             <text-input
-              class="flex__input"
+              class="flex__input flex__start-location"
               key="start-location"
               :value="startLocation"
               @input="event => setStartLocation(event.target.value)" 
@@ -15,39 +15,44 @@
               label="Start" 
               icon="icon-location"
             />
-            <div @click="swapDestinations">
-              <base-icon name="icon-invert" class="icon-invert"/>
+            <div @click="swapDestinations" class="icon-invert">
+              <base-icon name="icon-invert"/>
             </div>
-            <text-input
-              class="flex__input"
-              key="destination-location"
-              :value="destination"
-              @input="event => setDestination(event.target.value)" 
-              placeholder="City, Station or Airport" 
-              label="Arrival" 
-              icon="icon-location"
-            />
-            
-            <date-input
-              class="flex__input"
-              key="departure-date" 
-              placeholder="Depart" 
-              label="Depart"
-              :value="departureDate"
-              :disabled-dates="disabledDepartureDates"
-              @input="date => setDepartureDate(date)"
-            />
+            <div class="flex__input flex__destination">
+              <text-input
+                key="destination-location"
+                :value="destination"
+                @input="event => setDestination(event.target.value)" 
+                placeholder="City, Station or Airport" 
+                label="Arrival" 
+                icon="icon-location"
+              />
+              <div @click="swapDestinations" class="icon-invert icon-invert--inlined">
+                <base-icon name="icon-invert"/>
+              </div>
+            </div>
+            <div class="flex flex--space-between flex--vertical-middle flex__dates">
+              <date-input
+                class="flex__input"
+                key="departure-date" 
+                placeholder="Depart" 
+                label="Depart"
+                :value="departureDate"
+                :disabled-dates="disabledDepartureDates"
+                @input="date => setDepartureDate(date)"
+              />
 
-            <date-input
-              class="flex__input"
-              key="return-date" 
-              placeholder="Return" 
-              label="Return (optional)"
-              :value="returnDate"
-              :disabled-dates="disabledReturnDates"
-              @input="date => setReturnDate(date)"
-              icon="icon-calendar-return"
-            />
+              <date-input
+                class="flex__input"
+                key="return-date" 
+                placeholder="Return" 
+                label="Return (optional)"
+                :value="returnDate"
+                :disabled-dates="disabledReturnDates"
+                @input="date => setReturnDate(date)"
+                icon="icon-calendar-return"
+              />
+            </div>
           </div>
           <route-options/>
         </div>
@@ -141,16 +146,51 @@
   &:hover
     opacity: 1
 
+.icon-invert--inlined
+  position: absolute
+  right: 1rem
+  top: 50%
+  transform: translateY(-10%)
+  margin-top: 0
+  display: none
+
 .flex
   display: flex
+
+.flex--wrap
+  flex-wrap: wrap
 
 .flex--space-between
   justify-content: space-between
 
+.flex--vertical-middle
+  align-items: center
+
 .flex__input
   margin-left: 0.5rem
   margin-right: 0.5rem
+  flex-grow: 1
+  flex-basis: 100%
+  position: relative
 
-.flex-vertical-middle
-  align-items: center
+.flex__start-location,
+.flex__destination
+  flex-basis: 30%,
+
+.flex__dates
+  flex-basis: 33%
+
+@media screen and (max-width: 950px)
+  .flex__dates,
+  .flex__start-location,
+  .flex__destination
+    flex-basis: 100%
+    margin-top: 1.5rem
+
+  .icon-invert
+    display: none
+  
+  .icon-invert--inlined
+    display: block
+
 </style>

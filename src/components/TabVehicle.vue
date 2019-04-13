@@ -1,6 +1,7 @@
 <template>
     <div class="vehicles">
-        <switch-input 
+        <switch-input
+            class="vehicle" 
             v-for="(status, vehicle) in vehicles" 
             :label="vehicle" 
             :icon="getIcon(vehicle)" 
@@ -32,5 +33,11 @@
 <style lang="sass" scoped>
 .vehicles
     display: flex
+    flex-wrap: wrap
     justify-content: space-between
+
+@media screen and (max-width: 950px)
+    .vehicle
+        flex-basis: 50%
+        flex-grow: 1
 </style>
