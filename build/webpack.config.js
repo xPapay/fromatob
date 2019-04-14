@@ -5,8 +5,6 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const PreloadWebpackPlugin = require('preload-webpack-plugin')
-const DynamicPreloadWebpackPlugin = require('dynamic-preload-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -100,24 +98,6 @@ const config = {
             template: path.resolve(__dirname, '../src/template.html')
         }),
         new SpriteLoaderPlugin()
-        // new PreloadWebpackPlugin({
-        //     rel: 'preload',
-        //     // include: 'allAssets',
-        //     as(entry) {
-        //         if (/\.(jpe?g|svg|png)$/.test(entry)) {
-        //             return 'image'
-        //         }
-        //         return 'script'
-        //     }
-        // })
-        // new DynamicPreloadWebpackPlugin({
-        //     // routeModuleMap: {
-        //     //     '/': '@/views/HomePage'
-        //     // },
-        //     urls: {
-        //         '/': ['@/components/TheNavigation']
-        //     }
-        // })
     ]
 }
 
