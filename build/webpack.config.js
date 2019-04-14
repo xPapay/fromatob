@@ -102,7 +102,7 @@ const config = {
 }
 
 if (isProd) {
-    config.plugins.push(new MiniCssExtractPlugin({ filename: './assets/css/[name].css'}))
+    config.plugins.push(new MiniCssExtractPlugin({ filename: 'assets/css/[name].css'}))
     config.optimization.minimizer.push(new TerserJSPlugin(), new OptimizeCSSAssetsPlugin())
 }
 
