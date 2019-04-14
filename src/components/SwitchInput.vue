@@ -6,6 +6,7 @@
         <label class="switch">
             <input :id="label" type="checkbox" class="checkbox" :checked="checked" @change="$emit('change', $event.target.checked)">
             <div class="switch__round"></div>
+            <div class="switch__background"></div>
         </label>
         <label class="label" v-if="label" :for="label">{{ label }}</label>
     </div>
@@ -49,12 +50,16 @@
   display: block
   width: 60px
   height: 30px
-  background-color: $secondary-color
-  opacity: 0.7
-  border-radius: 15px
   position: relative
   cursor: pointer
   margin: 0.5rem
+
+.switch__background
+    width: 100%
+    height: 100%
+    background-color: rgba(#eee, 0.8)
+    border: 1px solid rgba($dark-gray, 0.7)
+    border-radius: 15px
   
 .switch__round
   position: absolute
@@ -72,6 +77,9 @@
 .checkbox:checked + .switch__round
   left: 100%
   transform: translate(-100%, -50%)
+
+.checkbox:checked ~ .switch__background
+    background-color: rgba($secondary-color, 0.7)
 
 .icon
     height: 2rem
