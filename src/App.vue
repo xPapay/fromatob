@@ -9,7 +9,7 @@
 
 <script>
   import 'normalize.css'
-  import { throttle } from 'lodash'
+  import { throttle } from 'lodash-es'
     export default {
         name: 'app',
         components: {
