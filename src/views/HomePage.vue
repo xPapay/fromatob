@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="header" :style="{backgroundImage: `url(${hero})`}">
+    <header class="header">
       <div class="content">
         <div class="flex flex--column">
           <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
@@ -120,9 +120,7 @@
 <style scoped lang="sass">
 .header
   min-height: 450px
-  background-size: cover
-  background-repeat: no-repeat
-  background-position: center center
+  background-color: $primary-color
   padding-bottom: 1rem
 
 .header__headline
@@ -216,5 +214,9 @@
 
   .header__subheadline
     display: none
+
+@media screen and (min-width: 450px)
+  .header
+    background: url('../assets/images/hero.jpg') center / cover no-repeat
 
 </style>
