@@ -10,10 +10,11 @@
 <script>
   import 'normalize.css'
   import { throttle } from 'lodash-es'
+  import TheNavigation from '@/components/TheNavigation'
     export default {
         name: 'app',
         components: {
-          TheNavigation: () => import(/* webpackChunkName: "navigation" */ '@/components/TheNavigation'),
+          TheNavigation,
           TheFooter: () => import(/* webpackChunkName: "footer" */ '@/components/TheFooter')
         },
         data() {
@@ -64,6 +65,21 @@ html
 
   &:hover
     background: $secondary-darker-color
+
+.flex
+  display: flex
+
+.flex--wrap
+  flex-wrap: wrap
+
+.flex--space-between
+  justify-content: space-between
+
+.flex--vertical-middle
+  align-items: center
+
+.flex--column
+  flex-direction: column
 
 @media screen and (max-width: 450px)
   html

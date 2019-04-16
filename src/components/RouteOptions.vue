@@ -16,7 +16,7 @@
                 <button class="cta-button tab-bookmark__cta-button">Search</button>
             </div>
         </div>
-        <component class="tab-body" v-show="expanded" :is="currentTabComponent"></component>
+        <component class="tab-body" v-if="expanded" :is="currentTabComponent"></component>
         <label class="tabs__footer">
             <input type="checkbox" checked> Find accomodation with Booking.com
         </label>
@@ -29,8 +29,8 @@
     import { mapState } from 'vuex'
     export default {
         components: {
-            TabPassenger: () => import(/* webpackChunkName: "passengerTab", webpackPrefetch: true */ '@/components/TabPassenger'),
-            TabVehicle: () => import(/* webpackChunkName: "vehicleTab", webpackPrefetch: true */ '@/components/TabVehicle'),
+            TabPassenger: () => import(/* webpackChunkName: "passengerTab" */ '@/components/TabPassenger'),
+            TabVehicle: () => import(/* webpackChunkName: "vehicleTab" */ '@/components/TabVehicle'),
             BaseIcon
         },
 
