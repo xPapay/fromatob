@@ -3,8 +3,8 @@
     <header class="header">
       <div class="content">
         <div class="flex flex--column">
-          <h1 class="header__headline">Train, Bus, Flight, Carpooling</h1>
-          <h3 class="header__subheadline">All the best deals and direct booking in one search engine</h3>
+          <h1 class="header__headline">Demo: Train, Bus, Flight, Carpooling</h1>
+          <h3 class="header__subheadline">This is just a demo page.</h3>
           <div class="hero flex__hero">
             <hero />
             <route-options/>

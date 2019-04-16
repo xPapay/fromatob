@@ -30,6 +30,7 @@
     height: 3.25rem
 
 .navigation-bar__logo
+    filter: blur(3px)
     height: 100%
 
     img
