@@ -29,8 +29,8 @@
     import { mapState } from 'vuex'
     export default {
         components: {
-            TabPassenger: () => import(/* webpackChunkName: "passengerTab" */ '@/components/TabPassenger'),
-            TabVehicle: () => import(/* webpackChunkName: "vehicleTab" */ '@/components/TabVehicle'),
+            TabPassenger: () => import(/* webpackChunkName: "passengerTab", webpackPrefetch: -50 */ '@/components/TabPassenger'),
+            TabVehicle: () => import(/* webpackChunkName: "vehicleTab", webpackPrefetch: -60 */ '@/components/TabVehicle'),
             BaseIcon
         },
 
